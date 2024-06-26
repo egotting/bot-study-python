@@ -12,7 +12,7 @@ class Message(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_channel_create(self,
                                       channel: discord.abc.GuildChannel):  # Esse evento serve pra aparecer algo quando criar um novo canal
-        await channel.send(f"CARAMBA QUE PINTO ENORME ")
+        await channel.send(f"novo canal")
 
     @commands.Cog.listener()
     async def on_message(self, msg: discord.Message):
@@ -20,13 +20,15 @@ class Message(commands.Cog):
         author = msg.author
         if author.bot:
             return  # Se for um bot vai parar a aplicação
-        # await msg.reply("seu pai")
+        # await msg.reply("test")
 
     # COMMANDS
+    @commands.command()
     async def on_member_join(self, member: discord.Member):
         channel = self.bot.get_channel(1228809943428370676)
-        await channel.send(f"{member.display_name} Entrou nessa buceta\n Espero que vc n se mate estudando")
+        await channel.send(f"{member.display_name} Entrou\n bons estudos")
 
+    @commands.command()
     async def on_member_remove(self, member: discord.Member):
         channel = self.bot.get_channel(1228809943428370676)
         await channel.send(f"{member.display_name} tchau")
@@ -34,8 +36,8 @@ class Message(commands.Cog):
     # SLASH COMMANDS
     @app_commands.command()
     async def test(self, interact: discord.Interaction):
-        await interact.response.send_message(f"iai, {interact.user.name} seu fudido")
-        await interact.followup.send("a vai se fuder")
+        await interact.response.send_message(f"iai, {interact.user.name} ")
+        await interact.followup.send("test123")
 
     @app_commands.command()
     async def talk(self, interact: discord.Interaction, phrase: str):

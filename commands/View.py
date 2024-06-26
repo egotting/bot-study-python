@@ -8,20 +8,21 @@ class View(commands.Cog):
         self.bot = bot
         super().__init__()
 
+    @commands.command()
     async def table(self, ctx: commands.Context):
         async def select_reponse(interact: discord.Interaction):
             choose = interact.data['values'][0]
-            cus = {'1': 'cu1', '2': 'cu1', '3': 'cu1', '4': 'cu1'}
+            cus = {'1': 'Test1', '2': 'Test1', '3': 'Test1', '4': 'Test1'}
             cu_choosed = cus[choose]
             await interact.response.send_message(f"Voce escolheu o {cu_choosed}")
 
         menu_select = discord.ui.Select(
             placeholder='Selecione uma opção')  # max_values é o quanto que o usuario vai poder selecionar
         opcoes = [
-            discord.SelectOption(label='cu1', value='1'),
-            discord.SelectOption(label='cu2', value='2'),
-            discord.SelectOption(label='cu3', value='3'),
-            discord.SelectOption(label='cu4', value='4'),
+            discord.SelectOption(label='Test1', value='1'),
+            discord.SelectOption(label='Test2', value='2'),
+            discord.SelectOption(label='Test3', value='3'),
+            discord.SelectOption(label='Test4', value='4'),
         ]
         menu_select.options = opcoes
         menu_select.callback = select_reponse
@@ -30,10 +31,11 @@ class View(commands.Cog):
         await ctx.send(
             view=view)  # ctx.send ele so escreve oq a função manda ctx.reply ele responde quem fez o comando marcando a pessoa
 
+    @commands.command()
     async def button(self, ctx: commands.Context):
         async def response_button(interact: discord.Interaction):
-            await interact.response.send_message('cu')  # ephemeral=True so a pessoa que clickou no botão ve
-            await interact.followup.send('cu 2')  ## followup faz entender q é uma continuação da outra msg
+            await interact.response.send_message('Test')  # ephemeral=True so a pessoa que clickou no botão ve
+            await interact.followup.send('Test 2')  ## followup faz entender q é uma continuação da outra msg
 
         view = discord.ui.View()
         _button = discord.ui.Button(label='Botão', style=discord.ButtonStyle.green)
@@ -46,8 +48,9 @@ class View(commands.Cog):
         await ctx.reply(view=view)
 
     # slash commands, os commands padroes n precisam de tag dentro do cog
+    @commands.command()
     async def pix(self, ctx: commands.Context):
-        my_embed = discord.Embed(title='penes', description='penes ao quadrado')  # start embed
+        my_embed = discord.Embed(title='Test', description='Test ao quadrado')  # start embed
 
         img = discord.File('src/ascii_icon.jpg', 'icon.jpg')  # img grande que fica no sentro
         my_embed.set_image(url="attachment://icon.jpg")
@@ -59,11 +62,11 @@ class View(commands.Cog):
         my_embed.color = discord.Color.light_gray()  # cor que fica do lado
         img_channel = discord.File('src/a68922bdf4b6850069ccae50b8532190.jpg',
                                    'img_channel.jpg')  # img icon que fican a esquerda
-        my_embed.set_author(name='fudido', url='https://github.com/egotting',
+        my_embed.set_author(name='Test1', url='https://github.com/egotting',
                             icon_url='attachment://img_channel.jpg')  # pode por url
-        my_embed.add_field(name="Viado1", value=1,
+        my_embed.add_field(name="Test2", value=1,
                            inline=False)  # inline false serve pra deixar tudo em uma linha reta "fica melhor pra quem usar celualr"
-        my_embed.add_field(name="Viado2", value=123, inline=False)
+        my_embed.add_field(name="Test3", value=123, inline=False)
 
         await ctx.reply(files=[img, thumb_file, img_channel], embed=my_embed)
 
