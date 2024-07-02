@@ -49,12 +49,12 @@ async def setup(bot):
 - Dentro do main coloca essa func pra percorrer o cogs e pega os arquivos
 
 ```python
-# pegando a pasta commands e os arquivos que tem la e trasendo pro main
+# pegando a pasta cogs e os arquivos que tem la e trasendo pro main
 async def carregar_cogs():
-    for arquivo in os.listdir("commands"):
+    for arquivo in os.listdir("cogs"):
         if arquivo.endswith('.py'):
             await bot.load_extension(
-                f"commands.{arquivo[:-3]}")  # ta pegando o arquivo e tirando os 3 ultimos caracteres pra n ter erro o .py
+                f"cogs.{arquivo[:-3]}")  # ta pegando o arquivo e tirando os 3 ultimos caracteres pra n ter erro o .py
 ```
 
 - Chamar a func dentro do on_ready pra carregar assim que starta
@@ -62,7 +62,7 @@ async def carregar_cogs():
 ```python
 @bot.event
 async def on_ready():
-    # serve pra sincronizar os slash commands com o discord
+    # serve pra sincronizar os slash cogs com o discord
     # recomendado n é por mais pra n precisar ficar syncando toda hr vou por aq
     await bot.tree.sync()
     await carregar_cogs()  # chamar no main a func de percorrer 

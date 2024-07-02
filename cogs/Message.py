@@ -14,13 +14,13 @@ class Message(commands.Cog):
                                       channel: discord.abc.GuildChannel):  # Esse evento serve pra aparecer algo quando criar um novo canal
         await channel.send(f"novo canal")
 
-    @commands.Cog.listener()
-    async def on_message(self, msg: discord.Message):
-        await self.bot.process_commands(msg)
-        author = msg.author
-        if author.bot:
-            return  # Se for um bot vai parar a aplicação
-        # await msg.reply("test")
+    # @commands.Cog.listener()
+    # async def on_message(self, msg: discord.Message):
+    #     await self.bot.process_commands(msg)
+    #     author = msg.author
+    #     if author.bot:
+    #         return  # Se for um bot vai parar a aplicação
+    #     # await msg.reply("test")
 
     # COMMANDS
     @commands.command()
