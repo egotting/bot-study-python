@@ -9,10 +9,10 @@ class Message(commands.Cog):
         super().__init__()
 
     # EVENT
-    @commands.Cog.listener()
-    async def on_guild_channel_create(self,
-                                      channel: discord.abc.GuildChannel):  # Esse evento serve pra aparecer algo quando criar um novo canal
-        await channel.send(f"novo canal")
+    # @commands.Cog.listener()
+    # async def on_guild_channel_create(self,
+    #                                   channel: discord.abc.GuildChannel):  # Esse evento serve pra aparecer algo quando criar um novo canal
+    #     await channel.send(f"novo canal")
 
     # @commands.Cog.listener()
     # async def on_message(self, msg: discord.Message):
