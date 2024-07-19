@@ -2,13 +2,14 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
+
 # from Http import keep_alive
 
 allowed = discord.Intents.default()
 allowed.message_content = True  # consegue ler as mensagens
 allowed.members = True  # Consegue ler os membros
 allowed.dm_messages = True  # Consegue ler as mensagens na dm
-
+allowed.guilds = True
 command = commands.Bot(command_prefix='!', intents=allowed)
 
 load_dotenv()
@@ -46,11 +47,12 @@ async def on_ready():
     print(f'bot esta online {command.user}')
 
 
-@commands.is_owner()
-async def reload(ctx: commands.Context, extension):
-    command.reload_extension(f"cogs.{extension}")
-    embed = discord.Embed(title='Reload', description=f'{extension} hot reload', color=0xff00c8)
-    await ctx.send(embed=embed)
+# @commands.is_owner()
+# async def reload(ctx: commands.Context, extension):
+#     command.reload_extension(f"cogs.{extension}")
+#     embed = discord.Embed(title='Reload', description=f'{extension} hot reload', color=0xff00c8)
+#     await ctx.send(embed=embed)
+#
 
 # keep_alive()
 command.run(TOKEN)

@@ -1,8 +1,7 @@
 ## Slash Commands
 
-usa ```interact: discord.Interaction``` como parametro e a tag ```bot.tree.command``` e ``` @app_commands.command()```
+usa `interact: discord.Interaction` como parametro e a tag `bot.tree.command` e ` @app_commands.command()`
 se usar cogs
-ex:
 
 ```python
     @app_commands.command()
@@ -12,8 +11,8 @@ async def sum_cogs(self, interact: discord.Interaction, n1: float, n2: float):
 
 ## Command padrão
 
-- Usar o ```ctx: commands.Context``` como paramentro e a tag ```@bot.commands()``` em cima da funce usando cogs é
-  assim ```@commands.command()``` ex:
+- Usar o `ctx: commands.Context` como paramentro e a tag `@bot.commands()` em cima da funce usando cogs é
+  assim `@commands.command()` ex:
 
 ```python
 @bot.command()
@@ -35,7 +34,7 @@ class(nome da classe)(commands.Cog):
         self.bot = bot
         super().__init__()
 
-    # aqui aonde fica os comandos dentro da classe 
+    # aqui aonde fica os comandos dentro da classe
     @app_commands.command()
     async def sum_cogs(self, interact: discord.Interaction, n1: float, n2: float):
         await interact.response.send_message(n1 + n2)
@@ -58,6 +57,7 @@ async def carregar_cogs():
 ```
 
 # Events
+
 - Chamar a func dentro do on_ready pra carregar assim que starta
 
 ```python
@@ -66,12 +66,13 @@ async def on_ready():
     # serve pra sincronizar os slash cogs com o discord
     # recomendado n é por mais pra n precisar ficar syncando toda hr vou por aq
     await bot.tree.sync()
-    await carregar_cogs()  # chamar no main a func de percorrer 
+    await carregar_cogs()  # chamar no main a func de percorrer
     print(f'bot esta online {bot.user}')
 ```
 
 # Embed
-```python 
+
+```python
     @commands.command()
     async def pix(self, ctx: commands.Context):
         my_embed = discord.Embed(title='Test', description='Test ao quadrado')  # start embed
@@ -94,4 +95,18 @@ async def on_ready():
 
         await ctx.reply(files=[img, thumb_file, img_channel], embed=my_embed)
 
+
+
+
+[ cozinha, dad, dada da,dada,da]
+se o user select cozinha, abre um ticket na categoria cozinha
+
+    switch: caso seja cozinha cria cozinha
+
 ```
+
+Roupas
+Cozinha
+Action Figures
+Mangas
+Ajuda
